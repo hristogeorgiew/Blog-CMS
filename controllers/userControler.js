@@ -1,3 +1,4 @@
 module.exports.register = (req, res) => {
-    res.json(req.body);
+    const {name, emaill, password} = req.body;
+    res.send(name);
 }
