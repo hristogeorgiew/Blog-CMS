@@ -1,8 +1,14 @@
 const app = require('express');
 const router = app.Router();
-const { register, registerValidations } = require('../controllers/userControler');
+const { 
+    register, 
+    registerValidations, 
+    login,
+    loginValidations
+} = require('../controllers/userControler');
 
 //use middleware
 router.post("/register", registerValidations, register);
+router.post('/login',loginValidations, login);
 
 module.exports = router; 
