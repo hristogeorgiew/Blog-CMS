@@ -7,4 +7,10 @@
 @import 'scss/utils/utils';
 
 // import scss components
-@import 'scss/components//–navbar.scss';
+@import 'scss/components/navbar';
+@import 'scss/components/bgImage';
+@import 'scss/components/account';
+
+
+// import scss Layot
+@import 'scss/layout/grid';
