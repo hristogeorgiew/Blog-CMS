@@ -9,7 +9,7 @@ const app = express();
 //connect mongoDB database
 connect();
 
-// parse application/json
+// parse application/json yes
 app.use(bodyParser.json());
 
 app.use('/', router);
