@@ -1,12 +1,16 @@
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { Provider } from "react-redux";
 import "./main.scss";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 
+import Store from "./store";
+
 function App() {
   return (
+    <Provider store={Store}>
     <Router>
         <Navbar />
         <Switch>
@@ -15,6 +19,7 @@ function App() {
            <Route path="/login" exact component={Login}/>
         </Switch>
     </Router>
+    </Provider>
   );
 }
 
