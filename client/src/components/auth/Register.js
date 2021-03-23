@@ -1,7 +1,9 @@
 import { useState } from "react";
 import BgImage from "./BgImage";
 import { Helmet } from "react-helmet";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { postRegister } from "../../store/asyncMethods/AuthMethods";
 
 const Register = () => {
 
@@ -11,7 +13,8 @@ const Register = () => {
         password: '',
     });
 
-    const useDispatch();
+    const  {loading, registerErrors} = useSelector( (state) => state.AuthReducer);
+    const dispatch =  useDispatch();
 
     const handleInputs = e => {
         setState({
@@ -20,9 +23,10 @@ const Register = () => {
         });
     };
 
-    const userRegister = e => {
+    //функция която изпраща на нашият api server
+    const userRegister = async (e) => {
         e.preventDefault();
-        console.log(state);
+        dispatch(postRegister(state));
     };
 
     return (
@@ -73,7 +77,11 @@ const Register = () => {
                                     />
                                 </div>
                                 <div className="group">
-                                    <input type="submit" name="" className="btn btn-default btn-block" value="Register"/>
+                                    <input 
+                                        type="submit" 
+                                        name="" 
+                                        className="btn btn-default btn-block" 
+                                        value={loading ? '...' : 'Register'}/>
                                 </div>
                             </form>
                         </div>
