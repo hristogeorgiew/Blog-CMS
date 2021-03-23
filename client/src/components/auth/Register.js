@@ -38,7 +38,7 @@ const Register = (props) => {
         if(user) {
             props.history.push('/dashboard');
         }
-    }, [registerErrors]);
+    }, [registerErrors, user]);
 
     return (
         <>
