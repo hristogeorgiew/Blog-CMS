@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BgImage from "./BgImage";
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 
 import { postRegister } from "../../store/asyncMethods/AuthMethods";
 
@@ -29,15 +30,27 @@ const Register = () => {
         dispatch(postRegister(state));
     };
 
+    useEffect(() => {
+        if(registerErrors.length > 0){
+            registerErrors.map((error) => toast.error(error.msg));
+        }
+    }, [registerErrors]);
+
     return (
         <>
             <Helmet>
                 <title>User Register</title>
-                <meta name="description" content="User Register form"/>
+                <meta name="description" content="User Register form" />
             </Helmet>
             <div className="row mt-80">
                 <div className="col-8">
                     <BgImage />
+                    <Toaster position='top-right' reverseOrder={false} toastOptions={{
+                            style: {
+                                fontSize: "14px",
+                            },
+                        }} 
+                    />
                 </div>
                 <div className="col-4">
                     <div className="account">
