@@ -3,6 +3,8 @@ import { Provider } from "react-redux";
 import "./main.scss";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
+import PrivateRoute from "./private/PrivateRoute";
+import RouteLinks from "./private/RouteLinks";
 import Home from "./components/Home";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
@@ -15,10 +17,10 @@ function App() {
     <Router>
         <Navbar />
         <Switch>
-           <Route path="/" exact component={Home}/>
-           <Route path="/register" exact component={Register}/>
-           <Route path="/login" exact component={Login}/>
-           <Route path="/dashboard" exact component={Dashboard}/>
+           <RouteLinks path="/" exact component={Home}/>
+           <RouteLinks path="/register" exact component={Register}/>
+           <RouteLinks path="/login" exact component={Login}/>
+           <PrivateRoute path="/dashboard" exact component={Dashboard}/>
         </Switch>
     </Router>
     </Provider>

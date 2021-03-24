@@ -35,9 +35,6 @@ const Register = (props) => {
             registerErrors.map((error) => toast.error(error.msg));
         }
 
-        if(user) {
-            props.history.push('/dashboard');
-        }
     }, [registerErrors, user]);
 
     return (
